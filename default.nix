@@ -1,4 +1,9 @@
-{ lib, llvm, cmake, ... }:
+{
+  lib,
+  llvm,
+  cmake,
+  ...
+}:
 
 llvm.stdenv.mkDerivation {
   pname = "lisp";
@@ -9,7 +14,7 @@ llvm.stdenv.mkDerivation {
   nativeBuildInputs = [ cmake ];
 
   meta = {
-    homapage = "https://github.com/nekitdev/lisp";
+    homepage = "https://github.com/nekitdev/lisp";
     description = "Lisp interpreter in C++";
     license = lib.licenses.mit;
     platforms = lib.platforms.all;
