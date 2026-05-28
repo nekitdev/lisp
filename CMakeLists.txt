@@ -10,8 +10,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 # set(SOURCES
 # )
 
-# set(HEADERS
-# )
+set(HEADERS
+    src/errors.h
+    src/primitives.h
+    src/symbol.h
+    src/value.h
+    src/types.h
+)
 
 set(EXECUTABLE src/main.cpp)
 
