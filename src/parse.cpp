@@ -369,6 +369,7 @@ static String LAMBDA_NAME = "lambda";
 static String BEGIN_NAME = "begin";
 static String AND_NAME = "and";
 static String OR_NAME = "or";
+static String DEFUN_NAME = "defun";
 
 Result lisp::eval(EnvPtr env, const Value& expression) {
     auto data = expression.data;
@@ -533,6 +534,58 @@ Result lisp::eval(EnvPtr env, const Value& expression) {
             auto lambda = Lambda { closure, arguments, body };
 
             return Value(std::make_shared<Lambda>(lambda));
+        }
+
+        if (name == DEFUN_NAME) {
+            if (cdr_size < 3) {
+                auto message = std::format(
+                    "`{}` expected at least 3 items, got {}", DEFUN_NAME, cdr_size
+                );
+
+                return std::unexpected(Error(message));
+            }
+
+            auto result = require_symbol(items[1]);
+
+            if (!result) {
+                return std::unexpected(result.error());
+            }
+
+            auto symbol = result.value();
+
+            auto names_result = require_list(items[2]);
+
+            if (!names_result) {
+                return std::unexpected(names_result.error());
+            }
+
+            auto names = names_result.value();
+
+            Names arguments;
+
+            arguments.reserve(names.size());
+
+            for (const auto& name: names) {
+                auto result = require_symbol(name);
+
+                if (!result) {
+                    return std::unexpected(result.error());
+                }
+
+                arguments.push_back(result.value());
+            }
+
+            auto body = Values(items.begin() + 3, items.end());
+
+            auto closure = std::make_shared<Env>(env);
+
+            auto lambda = Lambda { closure, arguments, body };
+
+            auto value = Value(std::make_shared<Lambda>(lambda));
+
+            env->define(symbol, value);
+
+            return value;
         }
 
         if (name == BEGIN_NAME) {

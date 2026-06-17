@@ -90,6 +90,9 @@ namespace lisp {
 
         [[nodiscard]] bool is_nil() const;
         [[nodiscard]] bool truthy() const;
+
+        bool operator==(const Value& other) const;
+        bool operator!=(const Value& other) const;
     };
 
     using EnvMap = std::unordered_map<String, Value>;
