@@ -7,24 +7,27 @@ set(CMAKE_CXX_COMPILER_FORCED TRUE)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-# set(SOURCES
-# )
+set(SOURCES
+    src/env.cpp
+    src/parse.cpp
+    src/values.cpp
+)
 
 set(HEADERS
-    src/errors.h
-    src/primitives.h
-    src/symbol.h
-    src/value.h
-    src/types.h
+    src/env.hpp
+    src/errors.hpp
+    src/lisp.hpp
+    src/parse.hpp
+    src/values.hpp
 )
 
 set(EXECUTABLE src/main.cpp)
 
-# add_library(lisp_library STATIC ${SOURCES} ${HEADERS})
-# target_include_directories(lisp_library PUBLIC src)
+add_library(lisp_library STATIC ${SOURCES} ${HEADERS})
+target_include_directories(lisp_library PUBLIC src)
 
 add_executable(lisp ${EXECUTABLE})
-# target_link_libraries(lisp lisp_library)
+target_link_libraries(lisp lisp_library)
 
 # enable_testing()
 # add_subdirectory(tests)

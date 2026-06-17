@@ -1,11 +1,11 @@
-#ifndef LISP_ERRORS_H
-#define LISP_ERRORS_H
+#ifndef LISP_ERRORS
+#define LISP_ERRORS
 
 #include <exception>
 #include <expected>
 #include <string>
 
-namespace lisp::errors {
+namespace lisp {
     class Error: public std::exception {
         public:
             std::string message;
@@ -18,7 +18,7 @@ namespace lisp::errors {
     };
 
     template <typename T>
-    using Result = std::expected<T, Error>;
+    using GenericResult = std::expected<T, Error>;
 }
 
-#endif // LISP_ERRORS_H
+#endif // LISP_ERRORS
