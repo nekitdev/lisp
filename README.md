@@ -1,6 +1,20 @@
 # `lisp`
 
 ```mermaid
+sequenceDiagram
+    participant User
+    participant Interpreter
+    participant Parser
+    participant Tokenizer
+    User->>Interpreter: run(Env env, String code)
+    Interpreter->>Tokenizer: tokenize(String code)
+    Tokenizer-->>Interpreter: Tokens
+    Interpreter->>Parser: parse(Tokens tokens)
+    Parser-->>Interpreter: Values
+    Interpreter-->>User: Value
+```
+
+```mermaid
 classDiagram
     class List {
         + vector~Value~ items
