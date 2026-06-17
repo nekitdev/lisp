@@ -29,7 +29,7 @@ target_include_directories(lisp_library PUBLIC src)
 add_executable(lisp ${EXECUTABLE})
 target_link_libraries(lisp lisp_library)
 
-if (DEFINED ENV{TEST})
+if (${TEST})
     enable_testing()
     add_subdirectory(tests)
 endif()

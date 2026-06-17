@@ -57,7 +57,16 @@ $ docker run lisp path/to/code.lisp
 
 ### Тесты
 
-TODO
+Тесты реализованы с использованием фреймворка **Google Test**. Для запуска тестов:
+
+```console
+$ cmake -S . -B build -D TEST=TRUE
+$ cmake --build build
+$ cd build
+$ ctest
+```
+
+Также предоставляется `test.sh` скрипт для сборки и запуска тестов.
 
 ## Диаграммы
 

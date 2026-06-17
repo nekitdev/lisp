@@ -1,4 +1,4 @@
-TEST=1 cmake -S . -B build
-TEST=1 cmake --build build
+cmake -S . -B build -D TEST=TRUE
+cmake --build build
 cd build
 ctest
