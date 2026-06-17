@@ -6,22 +6,22 @@ sequenceDiagram
     participant Interpreter
     participant Parser
     participant Tokenizer
-    activate Interpreter
     User->>Interpreter: run(Env env, String code)
+    activate Interpreter
+    Interpreter->>Tokenizer: tokenize(String code)
     deactivate Interpreter
     activate Tokenizer
-    Interpreter->>Tokenizer: tokenize(String code)
+    Tokenizer-->>Interpreter: Tokens
     deactivate Tokenizer
     activate Interpreter
-    Tokenizer-->>Interpreter: Tokens
+    Interpreter->>Parser: parse(Tokens tokens)
     deactivate Interpreter
     activate Parser
-    Interpreter->>Parser: parse(Tokens tokens)
+    Parser-->>Interpreter: Values
     deactivate Parser
     activate Interpreter
-    Parser-->>Interpreter: Values
-    deactivate Interpreter
     Interpreter-->>User: Value
+    deactivate Interpreter
 ```
 
 ```mermaid
