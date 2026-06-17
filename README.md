@@ -28,7 +28,7 @@
 ### Сборка
 
 ```console
-$ git clone https://github.com/nekitdev/lisp.git
+$ git clone --recurse-submodules https://github.com/nekitdev/lisp.git
 $ cd lisp
 $ cmake -S . -B build
 $ cmake --build build
