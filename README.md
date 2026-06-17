@@ -1,4 +1,8 @@
-# `lisp` — Lisp interpreter in C++
+# `lisp`
+
+[![Test][Test Badge]][Actions]
+
+> *Lisp interpreter in C++.*
 
 ## Описание
 
@@ -136,3 +140,6 @@ classDiagram
     Lambda *-- Value
     Lambda *-- Env
 ```
+
+[Actions]: https://github.com/nekitdev/lisp/actions
+[Test Badge]: https://github.com/nekitdev/lisp/workflows/test/badge.svg
