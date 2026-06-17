@@ -1,4 +1,67 @@
-# `lisp`
+# `lisp` — Lisp interpreter in C++
+
+## Описание
+
+Консольная программа на C++, которая реализует интерпретатор языка программирования Lisp
+в несколько этапов:
+
+- *Токенизация* — исходный код разбивается на токены (`tokenize`);
+- *Парсинг* — токены преобразуются в структуру данных, которая может быть выполнена (`parse`);
+- *Выполнение* — структура данных выполняется, и результат возвращается пользователю (`eval`).
+
+## Сторонние библиотеки
+
+- **С++ Standard Library** — стандартная библиотека C++23 (`std`).
+
+## Требования к системе
+
+- CMake 4.1.2 или выше;
+- Компилятор с поддержкой C++23 (GCC, Clang, MSVC);
+- Поддерживаемые операционные системы: Linux, macOS, Windows.
+
+## Инструкция по сборке и запуску
+
+### Сборка
+
+```console
+$ git clone https://github.com/nekitdev/lisp.git
+$ cd lisp
+$ cmake -S . -B build
+$ cmake --build build
+```
+
+Также предоставляются `build.sh` и `clean.sh` скрипты для сборки и очистки проекта соответственно.
+
+### Запуск
+
+Для запуска REPL (Read-Eval-Print-Loop):
+
+```console
+$ ./build/lisp
+```
+
+Для выполнения кода из файла:
+
+```console
+$ ./build/lisp path/to/code.lisp
+```
+
+### Docker
+
+```console
+$ docker build -t lisp .
+$ docker run lisp path/to/code.lisp
+```
+
+Также предоставляется `docker.sh` скрипт для сборки и запуска контейнера.
+
+### Тесты
+
+TODO
+
+## Диаграммы
+
+### Sequence
 
 ```mermaid
 sequenceDiagram
@@ -23,6 +86,8 @@ sequenceDiagram
     Interpreter-->>User: Value
     deactivate Interpreter
 ```
+
+### Class
 
 ```mermaid
 classDiagram
