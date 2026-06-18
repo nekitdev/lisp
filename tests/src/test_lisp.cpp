@@ -41,7 +41,7 @@ TEST_F(TestLisp, TestAdd) {
 
 // test 3: define and begin
 
-TEST_F(TestLisp, TestDefine) {
+TEST_F(TestLisp, TestDefineBegin) {
     auto result = run(env, "(begin (define n 69) n)");
 
     EXPECT_TRUE(result);
@@ -83,7 +83,7 @@ TEST_F(TestLisp, TestDefunFactorial) {
 
 // test 6: car-cdr-cons
 
-TEST_F(TestLisp, TestCarCdr) {
+TEST_F(TestLisp, TestCarCdrCons) {
     auto result = run(env, "(car (cdr (cons 13 (cons 42 nil))))");
 
     EXPECT_TRUE(result);
